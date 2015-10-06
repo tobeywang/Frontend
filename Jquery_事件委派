@@ -1,0 +1,39 @@
+//上一天、下一天日期變換
+//圖片式日期變換(Back & Next為圖片)
+
+ <tr id="TrBAndN" style="display: none">
+            <td class="f13black subtitle">
+                <img src="./Style/images/left (2).png" align="absmiddle" class="Back" style="cursor: pointer;"
+                    width="30px" height="30px" />&nbsp;<asp:Label ID="lblLeftRightDate" runat="server"></asp:Label>&nbsp;<img
+                        src="./Style/images/right (2).png" align="absmiddle" class="Next" style="cursor: pointer;"
+                        width="30px" height="30px" />
+            </td>
+        </tr>
+
+//Jquery delegate Click function
+        $('.Back').	delegate("", "click", function () {
+                //目前畫面的日期
+                var oriDate = $('#<%=lblLeftRightDate.ClientID %>').text();
+                if (oriDate != '') {
+                    var tempFull = new Date(oriDate);
+                    var tempDate = tempFull.getDate();
+                    //上一天
+                    tempFull.setDate(tempDate - 1);
+                    $('#<%=txtStartDate.ClientID %>').val(tempFull.getFullYear() + '/' + (tempFull.getMonth() + 1) + '/' + tempFull.getDate());
+                    //觸發搜尋
+                    $('#<%=btnSearch.ClientID %>').click();
+                }
+            });
+            $('.Next').delegate("", "click", function () {
+                var oriDate = $('#<%=lblLeftRightDate.ClientID %>').text();
+                if (oriDate != '') {
+                    var tempFull = new Date(oriDate);
+                    var tempDate = tempFull.getDate();
+                    tempFull.setDate(tempDate + 1);
+                    $('#<%=txtStartDate.ClientID %>').val(tempFull.getFullYear() + '/' + (tempFull.getMonth() + 1) + '/' + tempFull.getDate());
+                    $('#<%=btnSearch.ClientID %>').click();
+                }
+            });
+
+            Search 按下後function
+            $('#<%=lblLeftRightDate.ClientID %>').text($('#<%=txtStartDate.ClientID %>').val());
