@@ -1,4 +1,3 @@
-JS：
 $(function () {
         $("#Button2").click( addTextbox);
         });
@@ -15,11 +14,4 @@ $(function () {
         }
         
         
-Html：
-<div id="ConentDiv">
-    <input type="button" id ="Button2" value="new"/>
-    <input type="hidden" id="Count" name="Count" value="2" />
-    </div>
-    <div id="TextValueDiv"> 
-     <input type="text" id="text1" name="text1" /><br />   
-</div> 
+
